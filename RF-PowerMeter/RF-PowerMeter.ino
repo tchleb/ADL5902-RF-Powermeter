@@ -14,13 +14,16 @@ U8G2_SSD1306_128X64_NONAME_1_SW_I2C u8g2(U8G2_R0, /* clock=*/ SCL, /* data=*/ SD
 //#define Slope 42.7 //42,7mv/db @5.8Ghz
 #define Intercept -62.1 //-62.1Bm @2.6Ghz
 #define Slope 51 //51mv/db @2.6Ghz
+//#define Intercept -62.7 //-62.1Bm @900MHz
+//#define Slope 53.7 //53.7mv/db @900MHz
+
  
 const int ADL5902_VOUT = A0;      // Analog pin to read ADL5902 output voltage
 float attenuationOffset = 30.0;    // Initial attenuation offset in dB
 const float ATTENUATION_STEP = 1.0; // Step size for adjusting attenuation
 int rawValue;
 
-const int BUTTON_PIN = 2; // Change to your button pin
+const int BUTTON_PIN = 2; 
 int buttonState = HIGH;
 int lastButtonState = HIGH;
 unsigned long lastDebounceTime = 0;
@@ -95,7 +98,6 @@ void loop() {
   Serial.print(powerAfterAttenuator, 4); // Display power with 4 decimal places in dBm
   Serial.print(", ");
   Serial.println(powerAfterAttenuator_mW, 4); // Display power with 4 decimal places in mW
-
   delay(1000); // Delay for one second before taking the next measurement
 }
 
